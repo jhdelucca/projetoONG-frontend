@@ -1,0 +1,34 @@
+    const [title,setTitle] = useState('');
+    const [description,setDescription] = useState('');
+    const [value,setValue] = useState('');
+
+           <input 
+                            placeholder="Titulo do caso"
+                            value={title}
+                            onChange={e => setTitle(e.target.title)} />
+                        <textarea 
+                            placeholder="descricao"
+                            value={description}
+                            onChange={e => setDescription(e.target.description)} />
+                        <input 
+                            placeholder="valor em reais"
+                            value={value}
+                            onChange={e => setValue(e.target.value)}  />
+
+                const data = {
+            title,
+            description,
+            value,
+        };
+                            
+        try{
+            await api.post('incidents' , data ,{
+                headers: {
+                    Authorization: ongId,
+                }
+            })
+
+            history.push('/profile');
+        } catch (err) {
+            alert('Erro ao cadastrar caso. Tente novamente')
+        }
